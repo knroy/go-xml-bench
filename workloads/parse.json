@@ -1,0 +1,14 @@
+{
+  "id": "parse",
+  "area": "parse",
+  "description": "Parse the generated 1, 10 and 100 MB documents (bench/gen, seed 20261007). Cold: parse and write Canonical XML 1.0 to a file (go-xml via benchrun -helper, xmllint --c14n), so the outputs can be checked against each other; encoding/xml re-emits RawToken tokens. Warm (in-process engines only): go-xml builds the xdm tree, encoding/xml tokenises with RawToken and re-emits to a null sink. Throughput = file size / median.",
+  "inputs": "testdata/bench/parse/",
+  "normalise": "xml-c14n",
+  "engines": ["go-xml", "encoding-xml", "xmllint"],
+  "modes": ["cold", "warm"],
+  "items": [
+    {"name": "parse-1mb", "source": "testdata/bench/parse/parse-1mb.xml"},
+    {"name": "parse-10mb", "source": "testdata/bench/parse/parse-10mb.xml"},
+    {"name": "parse-100mb", "source": "testdata/bench/parse/parse-100mb.xml"}
+  ]
+}

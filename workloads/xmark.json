@@ -1,0 +1,124 @@
+{
+  "id": "xmark",
+  "area": "xquery",
+  "description": "XMark q1..q20 over the auction documents at factors 0.01 and 0.1 (about 1 and 11 MB); factor 1 (111 MB) is excluded because go-xml's CLI refuses a document over xdm.DefaultMaxBytes (64 MB) and has no flag to raise it; the auction document is the context item (testdata/bench/SOURCES.md). Outputs agree byte-for-byte after whitespace collapse; BaseX is told to serialize with the XML output method and an XML declaration, as go-xml and Saxon do by default, instead of its own newline-separated method.",
+  "inputs": "testdata/bench/xmark/",
+  "normalise": "whitespace",
+  "engines": [
+    "go-xml",
+    "saxon-he",
+    "basex"
+  ],
+  "modes": [
+    "cold",
+    "warm"
+  ],
+  "args": {
+    "basex": [
+      "-smethod=xml",
+      "-somit-xml-declaration=no"
+    ]
+  },
+  "items": [
+    {
+      "name": "q1",
+      "query": "testdata/bench/xmark/queries/q1.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q2",
+      "query": "testdata/bench/xmark/queries/q2.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q3",
+      "query": "testdata/bench/xmark/queries/q3.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q4",
+      "query": "testdata/bench/xmark/queries/q4.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q5",
+      "query": "testdata/bench/xmark/queries/q5.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q6",
+      "query": "testdata/bench/xmark/queries/q6.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q7",
+      "query": "testdata/bench/xmark/queries/q7.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q8",
+      "query": "testdata/bench/xmark/queries/q8.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q9",
+      "query": "testdata/bench/xmark/queries/q9.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q10",
+      "query": "testdata/bench/xmark/queries/q10.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q11",
+      "query": "testdata/bench/xmark/queries/q11.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q12",
+      "query": "testdata/bench/xmark/queries/q12.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q13",
+      "query": "testdata/bench/xmark/queries/q13.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q14",
+      "query": "testdata/bench/xmark/queries/q14.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q15",
+      "query": "testdata/bench/xmark/queries/q15.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q16",
+      "query": "testdata/bench/xmark/queries/q16.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q17",
+      "query": "testdata/bench/xmark/queries/q17.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q18",
+      "query": "testdata/bench/xmark/queries/q18.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q19",
+      "query": "testdata/bench/xmark/queries/q19.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    },
+    {
+      "name": "q20",
+      "query": "testdata/bench/xmark/queries/q20.xq",
+      "glob": "testdata/bench/xmark/auction-0.*.xml"
+    }
+  ]
+}

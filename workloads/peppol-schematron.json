@@ -1,0 +1,14 @@
+{
+  "id": "peppol-schematron",
+  "area": "xslt",
+  "description": "Peppol BIS Billing 3.0 validation: the CEN EN16931 and Peppol Schematron rule sets, compiled to XSLT 2.0 by SchXslt 1.10.1 (testdata/bench/peppol/xsl), each applied to every example invoice; the output is SVRL. Normalise is whitespace (indentation and Saxon's attribute wrapping differ), after strip removes what differs by design: the run timestamp (dct:created, current-dateTime; the compile-time one is a constant and goes too), the processor's own name and version (skos:prefLabel), and the file: URI spelling of the source document (file:/ in Saxon, file:/// in go-xml). xsltproc is omitted: the stylesheets are XSLT 2.0.",
+  "inputs": "testdata/bench/peppol/invoices/*.xml",
+  "normalise": "whitespace",
+  "strip": ["<dct:created>[^<]*</dct:created>", "<skos:prefLabel>(?:SAXON|go-xml)/[^<]*</skos:prefLabel>", "file:/+"],
+  "engines": ["go-xml", "saxon-he"],
+  "modes": ["cold", "warm"],
+  "items": [
+    {"name": "cen", "stylesheet": "testdata/bench/peppol/xsl/CEN-EN16931-UBL.xsl", "glob": "testdata/bench/peppol/invoices/*.xml"},
+    {"name": "peppol", "stylesheet": "testdata/bench/peppol/xsl/PEPPOL-EN16931-UBL.xsl", "glob": "testdata/bench/peppol/invoices/*.xml"}
+  ]
+}

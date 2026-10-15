@@ -1,0 +1,404 @@
+{
+  "id": "docbook-xsltng",
+  "area": "xslt",
+  "description": "DocBook xslTNG 2.6.0 (docbook.xsl, XSLT 3.0) rendering a fixed set of 42 of its own unit-test documents to XHTML5, chosen to span size (186 B to 54 KB) and feature areas (books, sets, refentries, tables, lists, synopses, callouts, glossary, bibliography, index, footnotes, l10n, dates). go-xml gets tests/check.sh's DocBook flags except -xinclude, which no listed document needs and the warm loop cannot express. Params dc-metadata=false and generator-metadata=false drop the two outputs that differ by design: the dc.modified timestamp (current-dateTime) and the generator string (product name). Known disagreements, kept so they stay visible: dates.001 (format-dateTime [P]/[F] names, pm/friday vs p.m./Friday) and fit.001 (Saxon raises XTDE0410 in l10n.xsl, go-xml does not). Excluded: XInclude/textdata documents; l10n.001 (Saxon raises XTDE0420 that -compat-drop-attributes-on-document relaxes); table-cals.049 (1.1 MB CALS table: go-xml ~64 s, over its 60 s default -timeout, vs Saxon ~15 s cold), too slow to time repeatedly. xsltproc is omitted: the stylesheet is XSLT 3.0.",
+  "inputs": "testdata/xsltng/src/test/resources/xml/",
+  "normalise": "xml-c14n",
+  "engines": [
+    "go-xml",
+    "saxon-he"
+  ],
+  "modes": [
+    "cold",
+    "warm"
+  ],
+  "args": {
+    "go-xml": [
+      "-allow-dir",
+      "testdata/xsltng",
+      "-allow-unparsed-text",
+      "-allow-doctype",
+      "-compat-drop-attributes-on-document"
+    ]
+  },
+  "items": [
+    {
+      "name": "JFK_Inaugural",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/JFK_Inaugural.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "admonitions.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/admonitions.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "appendix.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/appendix.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "article.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/article.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "auld_lang_syne",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/auld_lang_syne.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "bibliography.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/bibliography.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "blocks.002",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/blocks.002.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "book.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/book.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "calloutlist.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/calloutlist.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "chapter.003",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/chapter.003.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "classsynopsis.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/classsynopsis.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "cmdsynopsis.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/cmdsynopsis.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "dates.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/dates.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "de_book",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/de_book.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "drama.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/drama.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "epub.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/epub.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "equation.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/equation.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "figure.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/figure.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "fit.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/fit.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "footnote.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/footnote.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "fr_note.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/fr_note.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "funcsynopsis.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/funcsynopsis.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "glossary.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/glossary.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "hen_v",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/hen_v.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "index.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/index.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "indexterm.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/indexterm.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "inlines.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/inlines.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "itemizedlist.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/itemizedlist.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "mediaobject.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/mediaobject.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "orderedlist.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/orderedlist.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "procedure.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/procedure.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "programlisting.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/programlisting.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "programlistingco.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/programlistingco.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "ptoc.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/ptoc.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "qandaset.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/qandaset.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "refentry.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/refentry.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "section.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/section.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "set.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/set.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "table-cals.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/table-cals.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "table-html.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/table-html.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "variablelist.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/variablelist.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    },
+    {
+      "name": "xref.001",
+      "stylesheet": "testdata/xsltng/src/main/xslt/docbook.xsl",
+      "source": "testdata/xsltng/src/test/resources/xml/xref.001.xml",
+      "params": {
+        "dc-metadata": "false",
+        "generator-metadata": "false"
+      }
+    }
+  ]
+}

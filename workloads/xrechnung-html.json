@@ -1,0 +1,30 @@
+{
+  "id": "xrechnung-html",
+  "area": "xslt",
+  "description": "KoSIT XRechnung visualization, stage 2: xrechnung-html.xsl (XSLT 2.0, lang=de) renders an xr:invoice as a self-contained HTML page, reading its CSS and JavaScript with unparsed-text() and its labels from l10n/de.xml. The sources are stage 1's outputs: run sh bench/xrechnung-stage1.sh first, which writes them to bench/.cache/xrechnung-xr/ (xrechnung-xr checks that stage against Saxon). Output method is html, so normalise is whitespace (indentation differs). xsltproc is omitted: the stylesheet is XSLT 2.0. The stylesheet is version 2.0 and states no html-version, whose default XSLT 3.0 \u00a726 leaves implementation-defined: Saxon serializes as HTML5 and writes <!DOCTYPE HTML>, go-xml as HTML 4 without one, so the strip removes that line.",
+  "inputs": "bench/.cache/xrechnung-xr/*.xml",
+  "normalise": "whitespace",
+  "engines": [
+    "go-xml",
+    "saxon-he"
+  ],
+  "modes": [
+    "cold",
+    "warm"
+  ],
+  "args": {
+    "go-xml": [
+      "-allow-unparsed-text"
+    ]
+  },
+  "items": [
+    {
+      "name": "xrechnung-html",
+      "stylesheet": "testdata/bench/xrechnung/xsl/xrechnung-html.xsl",
+      "glob": "bench/.cache/xrechnung-xr/*.xml"
+    }
+  ],
+  "strip": [
+    "<!DOCTYPE HTML>"
+  ]
+}

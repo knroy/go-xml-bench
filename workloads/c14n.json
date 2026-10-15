@@ -1,0 +1,25 @@
+{
+  "id": "c14n",
+  "area": "c14n",
+  "description": "Canonical XML 1.0 (inclusive, no comments) of the generated 1 and 10 MB parse inputs: go-xml (xdm parse + c14n.Write) against xmllint --c14n. The check is not byte-exact: xmllint --c14n keeps comments and the go-xml helper writes C14N without comments (Inclusive10), so both outputs are re-canonicalised (xml-c14n) before comparing, and xmllint's output is about 2% larger. The cold process is the same as the parse workload's (benchrun -helper go-xml, xmllint --c14n); warm adds the canonical serialisation to a null sink on top of the parse. The 100 MB input is left out: it exceeds xdm's default 64 MiB MaxBytes, which the helper does not raise.",
+  "inputs": "testdata/bench/parse/",
+  "normalise": "xml-c14n",
+  "engines": [
+    "go-xml",
+    "xmllint"
+  ],
+  "modes": [
+    "cold",
+    "warm"
+  ],
+  "items": [
+    {
+      "name": "c14n-1mb",
+      "source": "testdata/bench/parse/parse-1mb.xml"
+    },
+    {
+      "name": "c14n-10mb",
+      "source": "testdata/bench/parse/parse-10mb.xml"
+    }
+  ]
+}

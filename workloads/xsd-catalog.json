@@ -1,0 +1,23 @@
+{
+  "id": "xsd-catalog",
+  "area": "xsd",
+  "description": "XSD validation with the W3C test-suite catalog schemas, standing in for UBL 2.1 (no UBL XSDs exist under testdata/: the Peppol and XRechnung inputs ship rules, stylesheets and instances only). Schemas: the XSLT 3.0 test-catalog schema (admin/catalog-schema.xsd, 144 KB, XSD 1.0 with vc: version attributes, local xml.xsd import) and the QT3 catalog schema (78 KB). Instances: real test-set catalogs from 3.6 KB to 2.5 MB. Invalid items are a QT3 test set given to the XSLT schema and an XSLT test set given to the QT3 schema (other namespace), and the XSLT suite's _base-expressions.xml: all three fail at the root (cvc-elt.1), not deep in the content. go-xml validates as XSD 1.0 so xmllint is comparable; Xerces always runs its 1.1 processor.",
+  "inputs": "testdata/xslt30-test/, testdata/qt3tests/",
+  "normalise": "none",
+  "xsd_version": "1.0",
+  "engines": ["go-xml", "xmllint", "xerces-j-xsd11"],
+  "modes": ["cold", "warm"],
+  "items": [
+    {"name": "xslt-catalog/unparsed-text-lines-3.6k", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/fn/unparsed-text-lines/_unparsed-text-lines-test-set.xml"},
+    {"name": "xslt-catalog/attribute-set-35k", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/decl/attribute-set/_attribute-set-test-set.xml"},
+    {"name": "xslt-catalog/xml-to-json-91k", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/fn/xml-to-json/_xml-to-json-test-set.xml"},
+    {"name": "xslt-catalog/unicode-90-698k", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/misc/unicode-90/_unicode-90-test-set.xml"},
+    {"name": "xslt-catalog/regex-syntax-2.2m", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/misc/regex-syntax/_regex-syntax-test-set.xml"},
+    {"name": "xslt-catalog/xp-striding-grounded-motionlessA-2.5m", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/sandp/xp-striding-grounded-motionless/_xp-striding-grounded-motionlessA-test-set.xml"},
+    {"name": "xslt-catalog/invalid-base-expressions", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/sandp/_base-expressions.xml"},
+    {"name": "xslt-catalog/invalid-qt3-abs", "schema": "testdata/xslt30-test/admin/catalog-schema.xsd", "source": "testdata/qt3tests/fn/abs.xml"},
+    {"name": "qt3-catalog/matches-61k", "schema": "testdata/qt3tests/catalog-schema.xsd", "source": "testdata/qt3tests/fn/matches.xml"},
+    {"name": "qt3-catalog/AxisStep-197k", "schema": "testdata/qt3tests/catalog-schema.xsd", "source": "testdata/qt3tests/prod/AxisStep.xml"},
+    {"name": "qt3-catalog/invalid-xslt-sort", "schema": "testdata/qt3tests/catalog-schema.xsd", "source": "testdata/xslt30-test/tests/insn/sort/_sort-test-set.xml"}
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "id": "xrechnung-xr",
+  "area": "xslt",
+  "description": "KoSIT XRechnung visualization, stage 1: ubl-invoice-xr.xsl (XSLT 2.0) maps each UBL Invoice of the KoSIT test suite to the intermediate xr:invoice XML. bench/xrechnung-stage1.sh writes the same stage's go-xml output as the sources of xrechnung-html (benchrun does not chain). Normalise is whitespace because xsl:output indent=\"yes\" indents by 2 in go-xml and 3 in Saxon; the outputs are otherwise byte-equal. xsltproc is omitted: the stylesheet is XSLT 2.0.",
+  "inputs": "testdata/bench/xrechnung/invoices/*.xml",
+  "normalise": "whitespace",
+  "engines": ["go-xml", "saxon-he"],
+  "modes": ["cold", "warm"],
+  "items": [
+    {"name": "ubl-invoice-xr", "stylesheet": "testdata/bench/xrechnung/xsl/ubl-invoice-xr.xsl", "glob": "testdata/bench/xrechnung/invoices/*.xml"}
+  ]
+}

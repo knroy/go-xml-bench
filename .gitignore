@@ -1,0 +1,10 @@
+# Engine jars, the compiled Java loop, scratch output and stage-1 sources:
+# fetch-engines.sh and xrechnung-stage1.sh recreate them.
+/.cache/
+
+# Results are kept only for releases; a run writes results.json.
+/results*.json
+!/results-v1-f45068c.json
+!/results-v2.0.0.json
+
+.DS_Store
