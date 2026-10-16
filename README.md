@@ -69,6 +69,7 @@ not tracked.
 |---|---|---|
 | `results-v1-f45068c.json` | v1 at `f45068c` | Apple M3 Pro, 12 cores, Go 1.26.4, OpenJDK 23.0.2 |
 | `results-v2.0.0.json` | v2.0.0 | Apple M3 Pro, 12 cores, Go 1.26.4, OpenJDK 23.0.2 |
+| `results-v2.0.1.json` | v2.0.1 | Apple M3 Pro, 12 cores, Go 1.26.4, OpenJDK 23.0.2 |
 
 ## The two modes
 

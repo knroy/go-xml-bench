@@ -6,5 +6,6 @@
 /results*.json
 !/results-v1-f45068c.json
 !/results-v2.0.0.json
+!/results-v2.0.1.json
 
 .DS_Store
