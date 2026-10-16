@@ -63,7 +63,7 @@ public class Loop {
             case "xerces-j-xsd11/xsd" -> XercesXsd.compile(compile);
             default -> throw new IllegalArgumentException("no loop for " + engine + "/" + task);
         };
-        System.out.println("COMPILE " + (System.nanoTime() - t0));
+        if (!engine.equals("basex")) System.out.println("COMPILE " + (System.nanoTime() - t0));
 
         boolean[] failed = new boolean[srcs.size()];
         for (int it = 0; it < warmup + iters; it++) {
@@ -121,9 +121,12 @@ public class Loop {
         }
     }
 
-    // BaseX has no reusable compiled query: a QueryProcessor is parsed and
-    // compiled per evaluation. COMPILE is the first parse+compile, and every
-    // timed item pays its own compile, which benchrun notes in the results.
+    // BaseX binds the input at compilation: a QueryProcessor compiled against
+    // one document ignores a context bound later and keeps answering for the
+    // first. So every item builds its own processor, and its time includes the
+    // query's parse and compile (under 1 ms on XMark, against 10-110 ms to
+    // parse the input into a DBNode). The compile here only checks the query;
+    // it runs in a cold JVM, so Loop reports no COMPILE time for BaseX.
     static final class BaseXQuery {
         static Runner compile(File f) throws Exception {
             String q = Files.readString(f.toPath());

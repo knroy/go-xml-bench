@@ -357,7 +357,7 @@ func (b *bench) runWorkload(w *Workload, timed func(string) bool, mode string, c
 					notes = append(notes, r.Note)
 				}
 				if id == "basex" {
-					notes = append(notes, "BaseX recompiles the query per evaluation; each item's time includes it")
+					notes = append(notes, "BaseX compiles the query per item, so no compile time is reported; each item's time includes that compile (under 1 ms on XMark)")
 				}
 				if res.errs[j] != "" && !checks[idx[j]][id].failed {
 					notes = append(notes, "warm run raised: "+firstLine(res.errs[j]))

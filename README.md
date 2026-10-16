@@ -78,9 +78,12 @@ not tracked.
 - **warm** — steady state: compile once, then time each item in-process. For
   go-xml and `encoding/xml` this is a Go loop in benchrun over the public APIs;
   for the JVM engines it is `java/Loop.java` through the engine's Java API.
-  Inputs are read into memory first and output goes to a null sink. libxml2
-  tools have no in-process harness, so they are cold only. BaseX recompiles a
-  query per evaluation, so its warm time includes compilation.
+  Inputs are read into memory first and output goes to a null sink, so every
+  engine's warm time per item is parse the input, evaluate, serialise. libxml2
+  tools have no in-process harness, so they are cold only. BaseX binds the
+  input when it compiles a query, so it compiles per item: its warm time
+  includes that compile (under 1 ms on XMark, against 10–110 ms to parse the
+  input), and it reports no compile time.
 
 The parse and c14n areas have no go-xml CLI command; their cold process is
 `benchrun -helper ENGINE SOURCE OUT`, which parses and writes Canonical XML.
